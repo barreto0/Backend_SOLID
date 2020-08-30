@@ -23,6 +23,8 @@ module.exports = {
         "prettier"
     ],
     "rules": {
+        "@typescript-eslint/camelcase": "off",
+        "class-methods-use-this": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
