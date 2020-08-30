@@ -3,6 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
+import authConfig from '../config/auth';
 
 interface Request {
     email: string;
@@ -38,9 +39,9 @@ class AuthenticateUserService {
         // payload (informações não seguras)
         // chave hash
         // configuração do token
-        const token = sign({}, '93934c048de167c3577d163d1d48c5d8', {
+        const token = sign({}, authConfig.jwt.secret, {
             subject: user.id,
-            expiresIn: '1d',
+            expiresIn: authConfig.jwt.expiresIn,
         });
 
         return {

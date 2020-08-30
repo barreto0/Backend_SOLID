@@ -6,7 +6,11 @@ import { getCustomRepository } from 'typeorm';
 import AppointmentsRepository from '../repositories/AppointmentRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const appointmentRouter = Router();
+
+appointmentRouter.use(ensureAuthenticated); // todas as rotas usarão esse middleware
 
 //  http://localhost:3000/appointments
 
